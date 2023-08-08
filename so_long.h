@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
+/*   Updated: 2023/08/07 19:51:55 by mneves-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+#include "libft/libft.h"
+#include "minilibx-linux/mlx.h"
+#include "printf/ft_printf.h"
+
+typedef struct  s_window
+{
+    void	*mlx;
+	void	*mlx_win;
+    char    **map;
+    int     altura;
+    int     largura;
+}t_window;
+
+//checkmap.c
+char	**get_map(char **map, int fd, int count);
+void	check_map(char **av, t_window *window);
+void	map_is_retangle(t_window *window);
+void	check_map_complete(t_window *window);
+
+
+//utils.c
+int     ft_strlen_nl(char *str);
+int 	map_invalid_char(char c);
+
+
+#endif
