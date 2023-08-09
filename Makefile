@@ -4,7 +4,7 @@
 
 NAME =  so_long
 BONUS_NAME = 
-CFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address 
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address 
 CC = cc 
 UNAME := $(shell uname)
 
@@ -54,10 +54,9 @@ endif
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	echo
-	make -C ./libft/ 
-	make -C ./printf/
-	make -C $(MLX_LIB_DIR)
+	@make -C ./libft/ --silent --no-print-directory
+	@make -C ./printf/ --silent --no-print-directory
+	@make -C $(MLX_LIB_DIR) --silent --no-print-directory
 	$(CC) $(CFLAGS) $(^) libft/libft.a printf/printf.a $(MLX_FLAGS) -o $(@)
 	@clear
 	@echo "$(GREEN)Compilation of ${CLR_RMV}${CYAN}$(NAME): ${CLR_RMV}$(GREEN)⭐️"

@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/09 14:31:31 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/09 16:30:56 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	map_is_retangle(t_window *window)
 	window->altura = i;
 }
 
-//função para
+//função que percorre a matrix e verifica se os caracteres são válidos
+//além disso, verifica se tem caracter duplicado ou faltando
 void	check_map_character(t_window *window)
 {
 	int	l;
@@ -93,13 +94,13 @@ void	check_map_character(t_window *window)
 				ft_putendl_fd("Check map: wrong character :(", 2);
 				exit(EXIT_FAILURE);
 			}
-			if (map_all_components(window))
-			{
-				ft_putendl_fd("Check map: wrong number of components :(", 2);
-				exit(EXIT_FAILURE);
-			}
 			c++;
 		}
 		l++;
+	}
+	if (map_all_components(window))
+	{
+		ft_putendl_fd("Check map: wrong number of components :(", 2);
+		exit(EXIT_FAILURE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:38:38 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/07 19:38:17 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:38:11 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int ac, char **av)
 	}
 	check_map(av, window);
 	window->mlx = mlx_init();
-	window->mlx_win = mlx_new_window(window->mlx, 10, 10, "Hello world!");
+	window->mlx_win = mlx_new_window(window->mlx, 500, 500, "Hello world!");
 	mlx_loop(window->mlx);
 }
 

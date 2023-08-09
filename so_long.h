@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/09 14:36:32 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:17:03 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef struct s_window
 	void	*mlx;
 	void	*mlx_win;
 	char	**map;
+	t_map	mapcomp;
 	int		altura;
 	int		largura;
-	t_map	*mapcomp;
 
 }			t_window;
 
