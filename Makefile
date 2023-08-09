@@ -12,7 +12,7 @@ UNAME := $(shell uname)
 #					SOURCES AND OBJS					 #
 ##########################################################
 
-SRCS = main.c checkmap.c utils.c
+SRCS = main.c checkmap.c utils_map.c
 
 BONUS_SRCS = 
 

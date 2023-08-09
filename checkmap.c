@@ -1,4 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkmap.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
+/*   Updated: 2023/08/09 14:31:31 by mneves-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// funções para checar o mapa do jogo
 #include "so_long.h"
+
+//recebe av[1] (o mapa) e *window que é pointer para a struct
+//abre o arquivo e começa a verificar se o mapa é válido
 
 void	check_map(char **av, t_window *window)
 {
@@ -12,9 +28,12 @@ void	check_map(char **av, t_window *window)
 	}
 	window->map = get_map(NULL, fd, 0);
 	map_is_retangle(window);
-	check_map_complete(window);
-
+	check_map_character(window);
 }
+
+// função recursiva para ler o file que está o mapa com gnl
+// e colocar esse map dentro de uma matrix para ser mais fácil o acesso
+// o mapa será acessado por linhas e colunas
 
 char	**get_map(char **map, int fd, int count)
 {
@@ -30,6 +49,9 @@ char	**get_map(char **map, int fd, int count)
 	map[count] = s;
 	return (map);
 }
+
+//verifica se o mapa é retângulo, ou seja, as linhas tem o mesmo tamanho
+//verifica se não tem espaços vazios no início do mapa
 
 void	map_is_retangle(t_window *window)
 {
@@ -54,15 +76,11 @@ void	map_is_retangle(t_window *window)
 	window->altura = i;
 }
 
-// window->map[l][c] != '1' || window->map[l][c] != '0'
-// 				|| window->map[l][c] != 'P' || window->map[l][c] != 'C'
-// 				|| window->map[l][c] != 'E' || window->map[l][c] != 'M'
-// 				|| !window->map[l][c] || window->map[l][c] != '\n'
-
-void	check_map_complete(t_window *window)
+//função para
+void	check_map_character(t_window *window)
 {
-	int l;
-	int c;
+	int	l;
+	int	c;
 
 	l = 0;
 	while (l < window->altura)
@@ -75,11 +93,11 @@ void	check_map_complete(t_window *window)
 				ft_putendl_fd("Check map: wrong character :(", 2);
 				exit(EXIT_FAILURE);
 			}
-			// if (!map_all_components(window, l, c))
-			// {
-			// 	ft_putendl_fd("Check map: wrong number of components :(", 2);
-			// 	exit(EXIT_FAILURE);
-			// }
+			if (map_all_components(window))
+			{
+				ft_putendl_fd("Check map: wrong number of components :(", 2);
+				exit(EXIT_FAILURE);
+			}
 			c++;
 		}
 		l++;
