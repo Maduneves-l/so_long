@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:31:50 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/09 16:36:39 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:48:50 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,19 @@ int	map_all_components(t_window *window)
 		|| !window->mapcomp.collect)
 		return (1);
 	return (0);
+}
+
+void	message_error(int i)
+{
+	if (i == 1)
+		ft_putendl_fd("Map is invalid, remove empty lines", 2);
+	if (i == 2)
+		ft_putendl_fd("Invalid map, wrong size", 2);
+	if (i == 3)
+		ft_putendl_fd("Check map: wrong character :(", 2);
+	if (i == 4)
+		ft_putendl_fd("Check map: wrong number of components :(", 2);
+	if(i == 5)
+		ft_putendl_fd("Check map: Missing wall :(", 2);
+	exit(EXIT_FAILURE);
 }

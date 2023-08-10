@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/09 15:17:03 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:59:51 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_map
 	int		collect;
 	int		player;
 	int		exit;
-	int		enemies;
 
 }			t_map;
 
@@ -37,16 +36,17 @@ typedef struct s_window
 
 }			t_window;
 
-
 //checkmap.c
-char		**get_map(char **map, int fd, int count);
 void		check_map(char **av, t_window *window);
+char		**get_map(char **map, int fd, int count);
 void		map_is_retangle(t_window *window);
 void		check_map_character(t_window *window);
+void		map_has_wall(t_window *window);
 
 //utils_map.c
 int			ft_strlen_nl(char *str);
 int			map_invalid_char(char c);
-int     	map_all_components(t_window *window);
+int			map_all_components(t_window *window);
+void		message_error(int i);
 
 #endif

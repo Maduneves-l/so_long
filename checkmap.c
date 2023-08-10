@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/09 16:30:56 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:35:35 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	check_map(char **av, t_window *window)
 	}
 	window->map = get_map(NULL, fd, 0);
 	map_is_retangle(window);
+	map_has_wall(window);
 	check_map_character(window);
 }
 
@@ -47,6 +48,7 @@ char	**get_map(char **map, int fd, int count)
 	if (!map)
 		exit(EXIT_FAILURE);
 	map[count] = s;
+	//printf("%d\n", count);
 	return (map);
 }
 
@@ -59,18 +61,12 @@ void	map_is_retangle(t_window *window)
 
 	i = 0;
 	if (!ft_strlen_nl(window->map[0]))
-	{
-		ft_putendl_fd("Map is invalid, remove empty lines", 2);
-		exit(EXIT_FAILURE);
-	}
+		message_error(1);
 	window->largura = ft_strlen_nl(window->map[0]);
 	while (window->map[i] && window->map[i][0] != '\n')
 	{
 		if (ft_strlen_nl(window->map[0]) != ft_strlen_nl(window->map[i]))
-		{
-			ft_putendl_fd("Invalid map, wrong size", 2);
-			exit(EXIT_FAILURE);
-		}
+			message_error(2);
 		i++;
 	}
 	window->altura = i;
@@ -90,17 +86,40 @@ void	check_map_character(t_window *window)
 		while (c < window->largura)
 		{
 			if (map_invalid_char(window->map[l][c]))
-			{
-				ft_putendl_fd("Check map: wrong character :(", 2);
-				exit(EXIT_FAILURE);
-			}
+				message_error(3);
 			c++;
 		}
 		l++;
 	}
 	if (map_all_components(window))
+		message_error(4);
+}
+
+//função para verficar se o mapa está fechado com parede (1)
+void	map_has_wall(t_window *window)
+{
+	int	line;
+	int	col;
+
+	col = 0;
+	line = 1;
+	while (line < window->altura)
 	{
-		ft_putendl_fd("Check map: wrong number of components :(", 2);
-		exit(EXIT_FAILURE);
+		while (col < window->largura)
+		{
+			if (window->map[0][col] != '1')
+				message_error(5);
+			col++;
+		}
+		if (window->map[line][0] != '1' || window->map[line][col - 1] != '1')
+			message_error(5);
+		line++;
+	}
+	col = 0;
+	while (col < window->largura)
+	{
+		if (window->map[line - 1][col] != '1' || window->altura == 1)
+			message_error(5);
+		col++;
 	}
 }
