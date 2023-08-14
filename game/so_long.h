@@ -6,16 +6,16 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/14 16:46:34 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:04:59 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "libft/libft.h"
-# include "minilibx_opengl/mlx.h"
-# include "printf/ft_printf.h"
+# include "../libft/libft.h"
+# include "../minilibx_opengl/mlx.h"
+# include <fcntl.h>
 
 typedef struct s_map
 {

@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 21:11:59 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/03/17 15:46:44 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:06:17 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "./gnl/get_next_line.h"
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);

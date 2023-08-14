@@ -12,7 +12,10 @@ UNAME := $(shell uname)
 #					SOURCES AND OBJS					 #
 ##########################################################
 
-SRCS = main.c check_map.c utils_map.c flood_fill.c
+SRCS = game/main.c \
+		game/check_map.c \
+		game/utils_map.c \
+		game/flood_fill.c 
 
 BONUS_SRCS = 
 
@@ -55,9 +58,8 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	@make -C ./libft/ --silent --no-print-directory
-	@make -C ./printf/ --silent --no-print-directory
 	@make -C $(MLX_LIB_DIR) --silent --no-print-directory
-	$(CC) $(CFLAGS) $(^) libft/libft.a printf/printf.a $(MLX_FLAGS) -o $(@)
+	$(CC) $(CFLAGS) $(^) libft/libft.a $(MLX_FLAGS) -o $(@)
 	@clear
 	@echo "$(GREEN)Compilation of ${CLR_RMV}${CYAN}$(NAME): ${CLR_RMV}$(GREEN)⭐️"
 	@echo "$(CYAN)$(NAME) ${CLR_RMV}$(GREEN)created with sucess ${CLR_RMV} ✔️"
@@ -70,14 +72,12 @@ bonus:
 clean:
 	rm -f $(OBJS)
 	make clean -C ./libft/
-	make clean -C ./printf/
 	clear
 	@echo "$(RED)Deleting🗑 $(PURPLE)-> $(YELLOW)$(NAME) $(CLR_RMV)$(RED)[objs]$(GREEN) ✔️${CLR_RMV}"
 
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C ./libft/
-	make fclean -C ./printf/
 	clear
 	@echo "$(RED)Deleting🗑 $(PURPLE)-> $(YELLOW)$(NAME) $(CLR_RMV)$(RED)[objs] $(GREEN)✔️${CLR_RMV}"
 
