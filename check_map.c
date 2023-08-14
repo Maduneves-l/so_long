@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkmap.c                                         :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/10 16:35:35 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:35:29 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	check_map(char **av, t_window *window)
 	map_is_retangle(window);
 	map_has_wall(window);
 	check_map_character(window);
+	init_flood_fill(window);
 }
 
 // função recursiva para ler o file que está o mapa com gnl
@@ -48,7 +49,6 @@ char	**get_map(char **map, int fd, int count)
 	if (!map)
 		exit(EXIT_FAILURE);
 	map[count] = s;
-	//printf("%d\n", count);
 	return (map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:31:50 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/10 15:48:50 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:34:44 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,36 @@ int	map_all_components(t_window *window)
 	int	l;
 	int	c;
 
-	l = 0;
-	window->mapcomp.player = 0;
+	l = -1;
+	window->mapcomp.player_count = 0;
 	window->mapcomp.collect = 0;
 	window->mapcomp.exit = 0;
-	while (l < window->altura)
+	while (++l < window->altura)
 	{
 		c = -1;
 		while (++c < window->largura)
 		{
 			if (window->map[l][c] == 'P')
-				window->mapcomp.player++;
+				player_pos(window, l, c);
 			if (window->map[l][c] == 'C')
 				window->mapcomp.collect++;
 			if (window->map[l][c] == 'E')
 				window->mapcomp.exit++;
 		}
-		l++;
 	}
-	if (window->mapcomp.player != 1 || window->mapcomp.exit != 1
+	if (window->mapcomp.player_count != 1 || window->mapcomp.exit != 1
 		|| !window->mapcomp.collect)
 		return (1);
 	return (0);
+}
+
+//função para guardar a posição inicial do player
+
+void	player_pos(t_window *window, int l, int c)
+{
+	window->mapcomp.player_count++;
+	window->mapcomp.py = l;
+	window->mapcomp.px = c;
 }
 
 void	message_error(int i)
@@ -76,7 +84,9 @@ void	message_error(int i)
 		ft_putendl_fd("Check map: wrong character :(", 2);
 	if (i == 4)
 		ft_putendl_fd("Check map: wrong number of components :(", 2);
-	if(i == 5)
+	if (i == 5)
 		ft_putendl_fd("Check map: Missing wall :(", 2);
+	if(i == 6)
+		ft_putendl_fd("Check map: Invalid path :(", 2);
 	exit(EXIT_FAILURE);
 }

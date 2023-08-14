@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/10 15:59:51 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:46:34 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 typedef struct s_map
 {
 	int		collect;
-	int		player;
+	int		player_count;
 	int		exit;
+	int 	px;
+	int 	py;
+	int 	f_exit;
 
 }			t_map;
 
@@ -47,6 +50,12 @@ void		map_has_wall(t_window *window);
 int			ft_strlen_nl(char *str);
 int			map_invalid_char(char c);
 int			map_all_components(t_window *window);
+void		player_pos(t_window *window, int l, int c);
 void		message_error(int i);
+
+//flood_fill.c
+void	init_flood_fill(t_window *window);
+void	flood_fill(t_window *window, char **map_temp, int px, int py);
+void    free_matrix(char **matrix);
 
 #endif
