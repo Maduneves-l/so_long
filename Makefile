@@ -15,7 +15,9 @@ UNAME := $(shell uname)
 SRCS = game/main.c \
 		game/check_map.c \
 		game/utils_map.c \
-		game/flood_fill.c 
+		game/flood_fill.c \
+		game/images.c \
+		game/moves.c
 
 BONUS_SRCS = 
 

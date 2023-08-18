@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:54:33 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/14 16:48:54 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:32:42 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	init_flood_fill(t_window *window)
 	int		i;
 
 	i = -1;
-    window->mapcomp.f_exit = 0;
+	window->mapcomp.f_exit = 0;
+	window->mapcomp.c_temp = window->mapcomp.collect;
 	map_temp = (char **)malloc(sizeof(char *) * (window->altura + 1));
 	if (!map_temp)
 		return ;
 	while (window->map[++i])
 		map_temp[i] = ft_strdup(window->map[i]);
 	flood_fill(window, map_temp, window->mapcomp.px, window->mapcomp.py);
-    free_matrix(map_temp);
-    if(window->mapcomp.collect != 0 || window->mapcomp.f_exit != 1)
-        message_error(6);
+	if (window->mapcomp.c_temp != 0 || window->mapcomp.f_exit != 1)
+		message_error(6);
 }
 
 //função para verificar se o caminho que o jogador percorre é válido
@@ -39,34 +39,33 @@ void	init_flood_fill(t_window *window)
 
 void	flood_fill(t_window *window, char **map_temp, int px, int py)
 {
-	if(map_temp[py][px] == 'G' || map_temp[py][px] == '1')
-        return ;
-    else if(map_temp[py][px] == 'C')
-        window->mapcomp.collect--;
-    else if(map_temp[py][px] == 'E')
-    {
-        window->mapcomp.f_exit = 1;
-        return ;
-    }
-    map_temp[py][px] = 'G';
-    flood_fill(window, map_temp, px + 1, py);
-    flood_fill(window, map_temp, px - 1, py);
-    flood_fill(window, map_temp, px, py + 1);
-    flood_fill(window, map_temp, px, py - 1);
+	if (map_temp[py][px] == 'G' || map_temp[py][px] == '1')
+		return ;
+	else if (map_temp[py][px] == 'C')
+		window->mapcomp.c_temp--;
+	else if (map_temp[py][px] == 'E')
+	{
+		window->mapcomp.f_exit = 1;
+		return ;
+	}
+	map_temp[py][px] = 'G';
+	flood_fill(window, map_temp, px + 1, py);
+	flood_fill(window, map_temp, px - 1, py);
+	flood_fill(window, map_temp, px, py + 1);
+	flood_fill(window, map_temp, px, py - 1);
 }
 
 //função para limpar matrix
 
-void    free_matrix(char **matrix)
+void	free_matrix(char **matrix)
 {
-    int i;
+	int	i;
 
-    
-    i = 0;
-    while(matrix[i])
-    {
-        free(matrix[i]);
-        i++;
-    }
-    free(matrix);
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }

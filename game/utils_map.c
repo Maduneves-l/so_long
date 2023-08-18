@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:31:50 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/14 16:34:44 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:32:16 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	message_error(int i)
 		ft_putendl_fd("Check map: wrong number of components :(", 2);
 	if (i == 5)
 		ft_putendl_fd("Check map: Missing wall :(", 2);
-	if(i == 6)
+	if (i == 6)
 		ft_putendl_fd("Check map: Invalid path :(", 2);
 	exit(EXIT_FAILURE);
 }
