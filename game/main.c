@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:38:38 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/18 16:22:13 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/18 18:01:19 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int ac, char **av)
 	t_window	window;
 
 	window.steps = 0;
-	//window = (t_window *)malloc(sizeof(t_window));
 	if (ac != 2)
 	{
 		ft_putendl_fd("Wrong numbers of arguments", 2);
@@ -30,5 +29,7 @@ int	main(int ac, char **av)
 	init_images(&window);
 	put_image(&window);
 	mlx_key_hook(window.mlx_win, key_hook, &window);
+	mlx_loop_hook(window.mlx, put_image, &window);
+	mlx_hook(window.mlx_win, ON_DESTROY, 0, close, &window);
 	mlx_loop(window.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:10:34 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/16 21:33:25 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:43:01 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_images(t_window *window)
 			&i);
 	window->im.p_back = mlx_xpm_file_to_image(window->mlx, "./img/m_back.xpm",
 			&i, &i);
-	window->im.p_curr = mlx_xpm_file_to_image(window->mlx, "./img/m_front.xpm",
+	window->im.p_front = mlx_xpm_file_to_image(window->mlx, "./img/m_front.xpm",
 			&i, &i);
 	window->im.p_left = mlx_xpm_file_to_image(window->mlx, "./img/m_left.xpm",
 			&i, &i);
@@ -33,11 +33,12 @@ void	init_images(t_window *window)
 			&i);
 	window->im.collect = mlx_xpm_file_to_image(window->mlx, "./img/star.xpm",
 			&i, &i);
+	window->im.p_curr = window->im.p_front;
 }
 
 //função para colocar as imagens na window (criada no main)
 //cada caracter do mapa corresponde a uma imagem (* 32) por conta dos pixiels
-void	put_image(t_window *window)
+int		put_image(t_window *window)	
 {
 	int	i;
 	int	j;
@@ -62,6 +63,7 @@ void	put_image(t_window *window)
 		}
 		i++;
 	}
+	return 0;
 }
 
 void	aux_images(t_window *window, int count, int i, int j)
@@ -81,4 +83,16 @@ void	aux_images(t_window *window, int count, int i, int j)
 	if (count == 5)
 		mlx_put_image_to_window(window->mlx, window->mlx_win, window->im.p_curr,
 			j * 32, i * 32);
+}
+
+void 	change_p_image(t_window *window, int x, int y)
+{
+	if(y > 0)
+		window->im.p_curr = window->im.p_front;
+	if(x < 0)
+		window->im.p_curr = window->im.p_left;
+	if(x > 0)
+		window->im.p_curr = window->im.p_right;
+	if(y < 0)
+		window->im.p_curr = window->im.p_back;
 }

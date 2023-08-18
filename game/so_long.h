@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/18 16:25:07 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:51:48 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ enum {
 	A_UP = 126,
 	A_DOWN = 125,
 	A_LEFT = 123,
-	A_RIGHT = 124
+	A_RIGHT = 124,
+	ON_DESTROY = 17
 };
 
 typedef struct s_map
@@ -43,10 +44,11 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*bg;
+	void 	*p_front;
 	void	*p_left;
 	void	*p_right;
-	void	*p_curr;
 	void	*p_back;
+	void	*p_curr;
 	void	*collect;
 	void	*wall;
 	void	*exit;
@@ -86,13 +88,15 @@ void		free_matrix(char **matrix);
 
 //images.c
 void		init_images(t_window *window);
-void		put_image(t_window *window);
+int 		put_image(t_window *window);
 void		aux_images(t_window *window, int count, int i, int j);
+void 		change_p_image(t_window *window, int x, int y);
 
 //moves.c
-int	key_hook(int keycode, t_window *window);
-int	check_colision(t_window *window, int x, int y, char c);
+int		key_hook(int keycode, t_window *window);
+int		check_colision(t_window *window, int x, int y, char c);
 void	moves(t_window *window, int x, int y);
 void	exit_game(char *s);
+int		key_close(int keycode, t_window *window);
 
 #endif

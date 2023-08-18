@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:38:19 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/18 16:28:59 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:58:02 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	moves(t_window *window, int x, int y)
 
 	px = window->mapcomp.px;
 	py = window->mapcomp.py;
+    change_p_image(window, x, y);
 	if (check_colision(window, px + x, py + y, 'E')
 		&& window->mapcomp.collect == 0)
 		exit_game("🥳!! YOU WIN !!🥳");
@@ -57,11 +58,19 @@ void	moves(t_window *window, int x, int y)
         window->mapcomp.px += x;
         window->mapcomp.py += y;
 	}
-    put_image(window);
 }
 
 void	exit_game(char *s)
 {
 	ft_putendl_fd(s, 2);
 	exit(EXIT_SUCCESS);
+}
+
+int	key_close(int keycode, t_window *window)
+{
+    (void)keycode;
+	mlx_clear_window(window->mlx, window->mlx_win);
+	mlx_destroy_window(window->mlx, window->mlx_win);
+	exit_game("GIVING UP ALREADY?");
+	return 0;
 }
