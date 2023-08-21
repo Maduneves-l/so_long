@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 16:21:59 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:48:44 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-# include "../minilibx_linux/mlx.h"
+//# include "../minilibx_linux/mlx.h"
+# include "../minilibx_opengl/mlx.h"
+
 # include <fcntl.h>
 
 // enum {
