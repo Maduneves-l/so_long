@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:10:34 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 16:23:29 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:24:59 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	init_images(t_window *window)
 			&i);
 	window->im.collect = mlx_xpm_file_to_image(window->mlx, "./img/star.xpm",
 			&i, &i);
+	window->im.ene = mlx_xpm_file_to_image(window->mlx, "./img/enemy.xpm", &i,
+			&i);
 	window->im.p_curr = window->im.p_front;
 }
 
@@ -43,11 +45,11 @@ int	put_image(t_window *window)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < window->altura)
+	i = -1;
+	while (++i < window->altura)
 	{
-		j = 0;
-		while (j < window->largura)
+		j = -1;
+		while (++j < window->largura)
 		{
 			if (window->map[i][j] == '1')
 				aux_images(window, 1, i, j);
@@ -59,9 +61,9 @@ int	put_image(t_window *window)
 				aux_images(window, 4, i, j);
 			else if (window->map[i][j] == 'P')
 				aux_images(window, 5, i, j);
-			j++;
+			else if (window->map[i][j] == 'M')
+				aux_images(window, 6, i, j);
 		}
-		i++;
 	}
 	return (0);
 }
@@ -83,6 +85,9 @@ void	aux_images(t_window *window, int count, int i, int j)
 	if (count == 5)
 		mlx_put_image_to_window(window->mlx, window->mlx_win, window->im.p_curr,
 			j * 32, i * 32);
+	if (count == 6)
+		mlx_put_image_to_window(window->mlx, window->mlx_win, window->im.ene, j 
+			* 32, i * 32);
 }
 
 void	change_p_image(t_window *window, int x, int y)

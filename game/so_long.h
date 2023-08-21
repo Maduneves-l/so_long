@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 17:48:44 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:07:27 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-//# include "../minilibx_linux/mlx.h"
-# include "../minilibx_opengl/mlx.h"
+# include "../minilibx_linux/mlx.h"
+//# include "../minilibx_opengl/mlx.h"
 
 # include <fcntl.h>
 
@@ -47,74 +47,76 @@ enum
 
 typedef struct s_map
 {
-	int		collect;
-	int		c_temp;
-	int		player_count;
-	int		exit;
-	int		px;
-	int		py;
-	int		f_exit;
+	int				collect;
+	int				c_temp;
+	int				player_count;
+	int				exit;
+	int				px;
+	int				py;
+	int				f_exit;
 
-}			t_map;
+}					t_map;
 
 typedef struct s_image
 {
-	void	*bg;
-	void	*p_front;
-	void	*p_left;
-	void	*p_right;
-	void	*p_back;
-	void	*p_curr;
-	void	*collect;
-	void	*wall;
-	void	*exit;
-}			t_image;
+	void			*bg;
+	void			*p_front;
+	void			*p_left;
+	void			*p_right;
+	void			*p_back;
+	void			*p_curr;
+	void			*collect;
+	void			*wall;
+	void			*exit;
+	void			*ene;
+}					t_image;
 
 typedef struct s_window
 {
-	void	*mlx;
-	void	*mlx_win;
-	char	**map;
-	t_image	im;
-	t_map	mapcomp;
-	int		altura;
-	int		largura;
-	int		steps;
+	void			*mlx;
+	void			*mlx_win;
+	char			**map;
+	t_image			im;
+	t_map			mapcomp;
+	int				altura;
+	int				largura;
+	unsigned int	steps;
 
-}			t_window;
+}					t_window;
 
 //checkmap.c
-void		check_map(char **av, t_window *window);
-char		**get_map(char **map, int fd, int count);
-void		map_is_retangle(t_window *window);
-void		check_map_character(t_window *window);
-void		map_has_wall(t_window *window);
+void				check_map(char **av, t_window *window);
+char				**get_map(char **map, int fd, int count);
+void				map_is_retangle(t_window *window);
+void				check_map_character(t_window *window);
+void				map_has_wall(t_window *window);
 
 //utils_map.c
-int			ft_strlen_nl(char *str);
-int			map_invalid_char(char c);
-int			map_all_components(t_window *window);
-void		player_pos(t_window *window, int l, int c);
-void		message_error(int i);
+int					ft_strlen_nl(char *str);
+int					map_invalid_char(char c);
+int					map_all_components(t_window *window);
+void				player_pos(t_window *window, int l, int c);
+void				message_error(int i);
 
 //flood_fill.c
-void		init_flood_fill(t_window *window);
-void		flood_fill(t_window *window, char **map_temp, int px, int py);
+void				init_flood_fill(t_window *window);
+void				flood_fill(t_window *window, char **map_temp, int px,
+						int py);
 
 //images.c
-void		init_images(t_window *window);
-int			put_image(t_window *window);
-void		aux_images(t_window *window, int count, int i, int j);
-void		change_p_image(t_window *window, int x, int y);
+void				init_images(t_window *window);
+int					put_image(t_window *window);
+void				aux_images(t_window *window, int count, int i, int j);
+void				change_p_image(t_window *window, int x, int y);
 
 //moves.c
-int			key_hook(int keycode, t_window *window);
-int			check_colision(t_window *window, int x, int y, char c);
-void		moves(t_window *window, int x, int y);
-int			key_close(int keycode, t_window *window);
+int					key_hook(int keycode, t_window *window);
+int					check_colision(t_window *window, int x, int y, char c);
+void				moves(t_window *window, int x, int y);
+int					key_close(int keycode, t_window *window);
 
 //clean.c
-void		exit_game(char *s, t_window *window);
-void		free_matrix(char **matrix);
+void				exit_game(char *s, t_window *window);
+void				free_matrix(char **matrix);
 
 #endif

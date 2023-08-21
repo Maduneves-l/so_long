@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:38:19 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 16:21:51 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:25:47 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	moves(t_window *window, int x, int y)
 	px = window->mapcomp.px;
 	py = window->mapcomp.py;
 	change_p_image(window, x, y);
+	if (check_colision(window, px + x, py + y, 'M'))
+		exit_game("👻 💀 GAME OVER 👻 💀", window);
 	if (check_colision(window, px + x, py + y, 'E')
 		&& window->mapcomp.collect == 0)
 		exit_game("🥳!! YOU WIN !!🥳", window);
