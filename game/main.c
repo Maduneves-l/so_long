@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:38:38 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/18 18:01:19 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:23:43 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	main(int ac, char **av)
 			window.altura * 32, "Mario_game!!");
 	init_images(&window);
 	put_image(&window);
-	mlx_key_hook(window.mlx_win, key_hook, &window);
+	mlx_hook(window.mlx_win, 2, 1L << 0, key_hook, &window);
 	mlx_loop_hook(window.mlx, put_image, &window);
-	mlx_hook(window.mlx_win, ON_DESTROY, 0, close, &window);
+	mlx_hook(window.mlx_win, 17, 0, key_close, &window);
 	mlx_loop(window.mlx);
 }

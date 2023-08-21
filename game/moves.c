@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:38:19 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/18 17:58:02 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:21:51 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	key_hook(int keycode, t_window *window)
 {
-	if (keycode == 53)
-		exit_game("GIVING UP ALREADY?");
+	if (keycode == K_ESC)
+		exit_game("GIVING UP ALREADY?", window);
 	else if (keycode == KEY_A || keycode == A_LEFT)
 		moves(window, -1, 0);
 	else if (keycode == KEY_D || keycode == A_RIGHT)
@@ -43,34 +43,26 @@ void	moves(t_window *window, int x, int y)
 
 	px = window->mapcomp.px;
 	py = window->mapcomp.py;
-    change_p_image(window, x, y);
+	change_p_image(window, x, y);
 	if (check_colision(window, px + x, py + y, 'E')
 		&& window->mapcomp.collect == 0)
-		exit_game("🥳!! YOU WIN !!🥳");
+		exit_game("🥳!! YOU WIN !!🥳", window);
 	if (!check_colision(window, px + x, py + y, '1') && !check_colision(window,
 			px + x, py + y, 'E'))
 	{
 		if (check_colision(window, px + x, py + y, 'C'))
 			window->mapcomp.collect--;
 		window->map[py][px] = '0';
-        window->map[py + y][px + x] = 'P';
-        window->steps++;
-        window->mapcomp.px += x;
-        window->mapcomp.py += y;
+		window->map[py + y][px + x] = 'P';
+		window->steps++;
+		window->mapcomp.px += x;
+		window->mapcomp.py += y;
 	}
-}
-
-void	exit_game(char *s)
-{
-	ft_putendl_fd(s, 2);
-	exit(EXIT_SUCCESS);
 }
 
 int	key_close(int keycode, t_window *window)
 {
-    (void)keycode;
-	mlx_clear_window(window->mlx, window->mlx_win);
-	mlx_destroy_window(window->mlx, window->mlx_win);
-	exit_game("GIVING UP ALREADY?");
-	return 0;
+	(void)keycode;
+	exit_game("GIVING UP ALREADY?", window);
+	return (0);
 }

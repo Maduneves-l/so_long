@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:10:34 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/18 17:43:01 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:23:29 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_images(t_window *window)
 
 //função para colocar as imagens na window (criada no main)
 //cada caracter do mapa corresponde a uma imagem (* 32) por conta dos pixiels
-int		put_image(t_window *window)	
+int	put_image(t_window *window)
 {
 	int	i;
 	int	j;
@@ -63,7 +63,7 @@ int		put_image(t_window *window)
 		}
 		i++;
 	}
-	return 0;
+	return (0);
 }
 
 void	aux_images(t_window *window, int count, int i, int j)
@@ -85,14 +85,14 @@ void	aux_images(t_window *window, int count, int i, int j)
 			j * 32, i * 32);
 }
 
-void 	change_p_image(t_window *window, int x, int y)
+void	change_p_image(t_window *window, int x, int y)
 {
-	if(y > 0)
+	if (y > 0)
 		window->im.p_curr = window->im.p_front;
-	if(x < 0)
+	if (x < 0)
 		window->im.p_curr = window->im.p_left;
-	if(x > 0)
+	if (x > 0)
 		window->im.p_curr = window->im.p_right;
-	if(y < 0)
+	if (y < 0)
 		window->im.p_curr = window->im.p_back;
 }

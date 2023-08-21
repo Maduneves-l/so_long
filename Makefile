@@ -4,7 +4,7 @@
 
 NAME =  so_long
 BONUS_NAME = 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address 
+CFLAGS = -Wall -Werror -Wextra  -g #-fsanitize=address 
 CC = cc 
 UNAME := $(shell uname)
 
@@ -17,7 +17,8 @@ SRCS = game/main.c \
 		game/utils_map.c \
 		game/flood_fill.c \
 		game/images.c \
-		game/moves.c
+		game/moves.c \
+		game/clean.c
 
 BONUS_SRCS = 
 
@@ -50,8 +51,8 @@ ifeq ($(UNAME), Darwin)
 	MLX_INCLUDE = -Iminilibx_opengl
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -L$(LIBFT_DIR) -lft -framework OpenGL -framework AppKit -O3
 else
-	MLX_LIB_DIR = minilibx-linux
-	MLX_INCLUDE = -Iminilibx-linux
+	MLX_LIB_DIR = minilibx_linux
+	MLX_INCLUDE = -Iminilibx_linux
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -O3
 endif
 

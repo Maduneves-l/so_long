@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:54:33 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/16 18:32:42 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:24:03 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	init_flood_fill(t_window *window)
 		return ;
 	while (window->map[++i])
 		map_temp[i] = ft_strdup(window->map[i]);
+	map_temp[i] = NULL;
 	flood_fill(window, map_temp, window->mapcomp.px, window->mapcomp.py);
+	free_matrix(map_temp);
 	if (window->mapcomp.c_temp != 0 || window->mapcomp.f_exit != 1)
 		message_error(6);
 }
@@ -53,19 +55,4 @@ void	flood_fill(t_window *window, char **map_temp, int px, int py)
 	flood_fill(window, map_temp, px - 1, py);
 	flood_fill(window, map_temp, px, py + 1);
 	flood_fill(window, map_temp, px, py - 1);
-}
-
-//função para limpar matrix
-
-void	free_matrix(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free(matrix);
 }

@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/14 16:35:29 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:31:35 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_map(char **av, t_window *window)
 	fd = open(av[1], O_RDONLY);
 	if (fd <= 0)
 	{
-		perror("Error opening the map");
+		ft_putendl_fd("Error opening the map", 2);
 		exit(EXIT_FAILURE);
 	}
 	window->map = get_map(NULL, fd, 0);
