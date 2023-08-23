@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:10:34 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 18:24:59 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/22 23:09:52 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	put_image(t_window *window)
 				aux_images(window, 6, i, j);
 		}
 	}
+	put_enemy(window);
 	return (0);
 }
 

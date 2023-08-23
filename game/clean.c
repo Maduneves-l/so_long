@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:16:56 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 16:19:29 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:28:23 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	exit_game(char *s, t_window *window)
 	mlx_destroy_image(window->mlx, window->im.wall);
 	free_matrix(window->map);
 	mlx_destroy_window(window->mlx, window->mlx_win);
-	mlx_loop_end(window->mlx);
-	mlx_destroy_display(window->mlx);
+	//mlx_loop_end(window->mlx);
+	//mlx_destroy_display(window->mlx);
 	free(window->mlx);
 	exit(EXIT_SUCCESS);
 }

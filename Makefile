@@ -18,7 +18,9 @@ SRCS = game/main.c \
 		game/flood_fill.c \
 		game/images.c \
 		game/moves.c \
-		game/clean.c
+		game/clean.c \
+		game/enemy.c
+
 
 BONUS_SRCS = 
 

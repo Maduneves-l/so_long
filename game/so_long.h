@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 18:07:27 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/22 23:12:37 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-# include "../minilibx_linux/mlx.h"
-//# include "../minilibx_opengl/mlx.h"
-
+//# include "../minilibx_linux/mlx.h"
+# include "../minilibx_opengl/mlx.h"
 # include <fcntl.h>
-
-// enum {
-// 	KEY_W = 13,
-// 	KEY_D = 2,
-// 	KEY_A = 0,
-// 	KEY_S = 1,
-// 	A_UP = 126,
-// 	A_DOWN = 125,
-// 	A_LEFT = 123,
-// 	A_RIGHT = 124,
-// 	ON_DESTROY = 17,
-//	K_ESC = 53
-// };
 
 enum
 {
-	KEY_W = 119,
-	KEY_D = 100,
-	KEY_A = 97,
-	KEY_S = 115,
-	A_UP = 65362,
-	A_DOWN = 65364,
-	A_LEFT = 65361,
-	A_RIGHT = 65363,
-	K_ESC = 65307
+	KEY_W = 13,
+	KEY_D = 2,
+	KEY_A = 0,
+	KEY_S = 1,
+	A_UP = 126,
+	A_DOWN = 125,
+	A_LEFT = 123,
+	A_RIGHT = 124,
+	ON_DESTROY = 17,
+	K_ESC = 53
 };
+
+// enum
+// {
+// 	KEY_W = 119,
+// 	KEY_D = 100,
+// 	KEY_A = 97,
+// 	KEY_S = 115,
+// 	A_UP = 65362,
+// 	A_DOWN = 65364,
+// 	A_LEFT = 65361,
+// 	A_RIGHT = 65363,
+// 	K_ESC = 65307
+// };
 
 typedef struct s_map
 {
@@ -71,6 +71,20 @@ typedef struct s_image
 	void			*ene;
 }					t_image;
 
+// typedef	struct s_enemy
+// {
+// 	int 	count;
+// 	int 	x;
+// 	int 	y;
+// }t_enemy;
+
+typedef struct s_enemy
+{
+	int				ex;
+	int				ey;
+	struct s_enemy	*next;
+}					t_enemy;
+
 typedef struct s_window
 {
 	void			*mlx;
@@ -80,6 +94,8 @@ typedef struct s_window
 	t_map			mapcomp;
 	int				altura;
 	int				largura;
+	int				count_e;
+	t_enemy			*enemy_list;
 	unsigned int	steps;
 
 }					t_window;
@@ -114,9 +130,20 @@ int					key_hook(int keycode, t_window *window);
 int					check_colision(t_window *window, int x, int y, char c);
 void				moves(t_window *window, int x, int y);
 int					key_close(int keycode, t_window *window);
+void				put_enemy(t_window *window);
 
 //clean.c
 void				exit_game(char *s, t_window *window);
 void				free_matrix(char **matrix);
 
+//enemy.c
+// void    count_enemy(t_window *window);
+// void    choose_move(t_window *window);
+// void    move_enemy(t_window *window, int i);
+// void	enemy(t_window *window);
+// void	moves_enemy(t_window *window, int x, int y);
+t_enemy				*e_lstnew(int x, int y);
+void				find_enemy(t_window *window);
+void				move_e(t_window *win, t_enemy *curr, int x, int y);
+void				choose_move(t_enemy *curr, t_window *win);
 #endif
