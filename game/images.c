@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:10:34 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/22 23:09:52 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:04:27 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,44 @@ void	init_images(t_window *window)
 //cada caracter do mapa corresponde a uma imagem (* 32) por conta dos pixiels
 int	put_image(t_window *window)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	char		*c;
+	static int	a;
 
 	i = -1;
+	c = ft_itoa(window->steps);
 	while (++i < window->altura)
 	{
 		j = -1;
 		while (++j < window->largura)
-		{
-			if (window->map[i][j] == '1')
-				aux_images(window, 1, i, j);
-			else if (window->map[i][j] == '0')
-				aux_images(window, 2, i, j);
-			else if (window->map[i][j] == 'C')
-				aux_images(window, 3, i, j);
-			else if (window->map[i][j] == 'E')
-				aux_images(window, 4, i, j);
-			else if (window->map[i][j] == 'P')
-				aux_images(window, 5, i, j);
-			else if (window->map[i][j] == 'M')
-				aux_images(window, 6, i, j);
-		}
+			aux2_image(window, i, j);
+		mlx_string_put(window->mlx, window->mlx_win, 20, 20, 0xFFFFFFFF, c);
 	}
-	put_enemy(window);
+	free(c);
+	if (a == 500)
+	{
+		put_enemy(window);
+		a = 0;
+	}
+	a++;
 	return (0);
+}
+
+void	aux2_image(t_window *window, int i, int j)
+{
+	if (window->map[i][j] == '1')
+		aux_images(window, 1, i, j);
+	else if (window->map[i][j] == '0')
+		aux_images(window, 2, i, j);
+	else if (window->map[i][j] == 'C')
+		aux_images(window, 3, i, j);
+	else if (window->map[i][j] == 'E')
+		aux_images(window, 4, i, j);
+	else if (window->map[i][j] == 'P')
+		aux_images(window, 5, i, j);
+	else if (window->map[i][j] == 'M')
+		aux_images(window, 6, i, j);
 }
 
 void	aux_images(t_window *window, int count, int i, int j)
@@ -87,7 +100,7 @@ void	aux_images(t_window *window, int count, int i, int j)
 		mlx_put_image_to_window(window->mlx, window->mlx_win, window->im.p_curr,
 			j * 32, i * 32);
 	if (count == 6)
-		mlx_put_image_to_window(window->mlx, window->mlx_win, window->im.ene, j 
+		mlx_put_image_to_window(window->mlx, window->mlx_win, window->im.ene, j
 			* 32, i * 32);
 }
 

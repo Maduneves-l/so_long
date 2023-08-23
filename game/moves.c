@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:38:19 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/22 23:24:03 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:45:23 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,14 @@ int	key_close(int keycode, t_window *window)
 	return (0);
 }
 
-void    put_enemy(t_window *window)
+void	put_enemy(t_window *window)
 {
-    find_enemy(window);
-    t_enemy *curr;
-    curr = window->enemy_list;
+	t_enemy	*curr;
 
-    while(curr != NULL)
-    {
-        choose_move(curr, window);
-        curr = curr->next;
-    }
+	curr = window->enemy_list;
+	while (curr != NULL)
+	{
+		choose_move(curr, window);
+		curr = curr->next;
+	}
 }
