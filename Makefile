@@ -21,7 +21,6 @@ SRCS = game/main.c \
 		game/clean.c \
 		game/enemy.c
 
-
 BONUS_SRCS = 
 
 OBJS :=$(SRCS:.c=.o)
