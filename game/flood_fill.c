@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:54:33 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 16:24:03 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:23:01 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_flood_fill(t_window *window)
 	flood_fill(window, map_temp, window->mapcomp.px, window->mapcomp.py);
 	free_matrix(map_temp);
 	if (window->mapcomp.c_temp != 0 || window->mapcomp.f_exit != 1)
-		message_error(6);
+		message_error(6, window);
 }
 
 //função para verificar se o caminho que o jogador percorre é válido

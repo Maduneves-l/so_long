@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/23 12:11:29 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:29:45 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ typedef struct s_window
 
 }					t_window;
 
+//main.c
+void				check_extesion(char *av);
+
 //checkmap.c
 void				check_map(char **av, t_window *window);
 char				**get_map(char **map, int fd, int count);
@@ -105,7 +108,7 @@ int					ft_strlen_nl(char *str);
 int					map_invalid_char(char c);
 int					map_all_components(t_window *window);
 void				player_pos(t_window *window, int l, int c);
-void				message_error(int i);
+void				message_error(int i, t_window *window);
 
 //flood_fill.c
 void				init_flood_fill(t_window *window);
@@ -123,7 +126,7 @@ void				aux_images(t_window *window, int count, int i, int j);
 int					key_hook(int keycode, t_window *window);
 int					check_colision(t_window *window, int x, int y, char c);
 void				moves(t_window *window, int x, int y);
-int					key_close(int keycode, t_window *window);
+int					key_close(t_window *window);
 void				put_enemy(t_window *window);
 
 //clean.c

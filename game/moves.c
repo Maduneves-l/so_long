@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:38:19 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/23 12:45:23 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:57:55 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ void	moves(t_window *window, int x, int y)
 	}
 }
 
-int	key_close(int keycode, t_window *window)
+int	key_close( t_window *window)
 {
-	(void)keycode;
 	exit_game("GIVING UP ALREADY?", window);
 	return (0);
 }

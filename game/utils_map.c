@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:31:50 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/16 18:32:16 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:20:44 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	player_pos(t_window *window, int l, int c)
 	window->mapcomp.px = c;
 }
 
-void	message_error(int i)
+void	message_error(int i, t_window *window)
 {
 	if (i == 1)
 		ft_putendl_fd("Map is invalid, remove empty lines", 2);
@@ -88,5 +88,6 @@ void	message_error(int i)
 		ft_putendl_fd("Check map: Missing wall :(", 2);
 	if (i == 6)
 		ft_putendl_fd("Check map: Invalid path :(", 2);
+	free_matrix(window->map);
 	exit(EXIT_FAILURE);
 }

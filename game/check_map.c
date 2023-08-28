@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/21 15:31:35 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:22:24 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void	map_is_retangle(t_window *window)
 
 	i = 0;
 	if (!ft_strlen_nl(window->map[0]))
-		message_error(1);
+		message_error(1, window);
 	window->largura = ft_strlen_nl(window->map[0]);
 	while (window->map[i] && window->map[i][0] != '\n')
 	{
 		if (ft_strlen_nl(window->map[0]) != ft_strlen_nl(window->map[i]))
-			message_error(2);
+			message_error(2, window);
 		i++;
 	}
 	window->altura = i;
@@ -86,13 +86,13 @@ void	check_map_character(t_window *window)
 		while (c < window->largura)
 		{
 			if (map_invalid_char(window->map[l][c]))
-				message_error(3);
+				message_error(3, window);
 			c++;
 		}
 		l++;
 	}
 	if (map_all_components(window))
-		message_error(4);
+		message_error(4, window);
 }
 
 //função para verficar se o mapa está fechado com parede (1)
@@ -108,18 +108,18 @@ void	map_has_wall(t_window *window)
 		while (col < window->largura)
 		{
 			if (window->map[0][col] != '1')
-				message_error(5);
+				message_error(5, window);
 			col++;
 		}
 		if (window->map[line][0] != '1' || window->map[line][col - 1] != '1')
-			message_error(5);
+			message_error(5, window);
 		line++;
 	}
 	col = 0;
 	while (col < window->largura)
 	{
 		if (window->map[line - 1][col] != '1' || window->altura == 1)
-			message_error(5);
+			message_error(5, window);
 		col++;
 	}
 }
