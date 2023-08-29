@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:30:57 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/28 14:22:24 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:48:35 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	map_is_retangle(t_window *window)
 	if (!ft_strlen_nl(window->map[0]))
 		message_error(1, window);
 	window->largura = ft_strlen_nl(window->map[0]);
-	while (window->map[i] && window->map[i][0] != '\n')
+	while (window->map[i])
 	{
 		if (ft_strlen_nl(window->map[0]) != ft_strlen_nl(window->map[i]))
 			message_error(2, window);

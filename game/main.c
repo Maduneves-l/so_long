@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:38:38 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/28 16:33:51 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:55:28 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,19 @@ int	main(int ac, char **av)
 	mlx_loop(window.mlx);
 }
 
+void	check_extesion(char *av)
+{
+	char	*tmp;
 
- void	check_extesion(char *av)
- {
-	if (ft_strncmp(ft_strchr(av, '.'), ".ber\0", 5) != 0)
+	tmp = ft_strchr(av, '.');
+	if (!tmp)
+	{
+		ft_putendl_fd("ERROR", 2);
+		exit(EXIT_FAILURE);
+	}
+	if (ft_strncmp(tmp, ".ber\0", 5) != 0)
 	{
 		ft_putendl_fd(" Map: Wrong extension", 2);
 		exit(EXIT_FAILURE);
 	}
- }
+}
