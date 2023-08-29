@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:31:50 by mneves-l          #+#    #+#             */
-/*   Updated: 2023/08/29 13:25:49 by mneves-l         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:28:41 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strlen_nl(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] && str[i] != '\n' && str[i] != ' ')
+	while (str[i] && str[i] != '\n')
 		i++;
 	return (i);
 }
