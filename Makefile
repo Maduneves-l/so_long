@@ -21,12 +21,7 @@ SRCS = game/main.c \
 		game/clean.c \
 		game/enemy.c
 
-BONUS_SRCS = 
-
 OBJS :=$(SRCS:.c=.o)
-
-OBJS_BONUS :=$(BONUS_SRCS:.c=.o)
-
 
 ##########################################################
 #					CODIGOS ANSI						 #
