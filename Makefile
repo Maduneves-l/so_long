@@ -47,7 +47,7 @@ ifeq ($(UNAME), Darwin)
 	MLX_INCLUDE = -Iminilibx_opengl
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -L$(LIBFT_DIR) -lft -framework OpenGL -framework AppKit -O3
 else
-	MLX_LIB_DIR = minilibx_linux
+	MLX_LIB_DIR = minilibx_linux/
 	MLX_INCLUDE = -Iminilibx_linux
 	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -O3
 endif

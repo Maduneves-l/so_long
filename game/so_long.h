@@ -6,7 +6,7 @@
 /*   By: mneves-l <mneves-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:39:13 by mneves-l          #+#    #+#             */
-/*   Updated: 2024/05/08 15:48:03 by mneves-l         ###   ########.fr       */
+/*   Updated: 2024/05/08 16:28:41 by mneves-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-#include "../minilibx_linux/mlx.h"
-//# include "../minilibx_opengl/mlx.h"
+//#include "../minilibx_linux/mlx.h"
+# include "../minilibx_opengl/mlx.h"
 # include <fcntl.h>
 
 //teclas MAC
- /*enum
+enum
 {
  	KEY_W = 13,
  	KEY_D = 2,
@@ -31,10 +31,10 @@
  	A_RIGHT = 124,
 	ON_DESTROY = 17,
  	K_ESC = 53
-};*/
+};
 
 //teclas LINUX
- enum
+/* enum
 {
 	KEY_W = 119,
 	KEY_D = 100,
@@ -45,7 +45,7 @@
 	A_LEFT = 65361,
 	A_RIGHT = 65363,
 	K_ESC = 65307
-};
+};*/
 
 
 typedef struct s_map
